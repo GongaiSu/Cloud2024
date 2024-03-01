@@ -48,4 +48,10 @@ public class OrderController {
         ResponseEntity<ResultData> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ResultData.class);
         return response.getBody();
     }
+
+    @GetMapping(value = "/consumer/pay/get/version")
+    private String getInfoByConsul()
+    {
+        return restTemplate.getForObject(PaymentSrv_URL + "/pay/get/version", String.class);
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -66,7 +67,8 @@ public class PayController {
 
 
     @GetMapping("/pay/get/version")
-    public String getAtguiguVersion(@Value("${server.port}")  String atguiguVersion){
+    public String getAtguiguVersion(@Value("${server.port}") String atguiguVersion) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(6);
         return atguiguVersion;
     }
 }
