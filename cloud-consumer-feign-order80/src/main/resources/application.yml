@@ -35,7 +35,7 @@ spring:
         response:
           enabled: false
       circuitbreaker:
-        enabled: true
+        enabled: false
         group:
           enabled: true
 logging:
@@ -112,13 +112,20 @@ logging:
 #      default:
 #        timeout-duration: 20s
 ####resilience4j ratelimiter 限流的例子
-resilience4j:
-  ratelimiter:
-    configs:
-      default:
-        limitForPeriod: 2 #在一次刷新周期内，允许执行的最大请求数
-        limitRefreshPeriod: 1s # 限流器每隔limitRefreshPeriod刷新一次，将允许处理的最大请求数量重置为limitForPeriod
-        timeout-duration: 1 # 线程等待权限的默认等待时间
-    instances:
-      cloud-payment-service:
-        baseConfig: default
+#resilience4j:
+#  ratelimiter:
+#    configs:
+#      default:
+#        limitForPeriod: 2 #在一次刷新周期内，允许执行的最大请求数
+#        limitRefreshPeriod: 1s # 限流器每隔limitRefreshPeriod刷新一次，将允许处理的最大请求数量重置为limitForPeriod
+#        timeout-duration: 1 # 线程等待权限的默认等待时间
+#    instances:
+#      cloud-payment-service:
+#        baseConfig: default
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
