@@ -1,25 +1,27 @@
 server:
   port: 9527
-spring:
-  application:
-    name: cloud-gateway
-  cloud:
-    consul:
-      host: localhost
-      port: 8500
-      discovery:
-        prefer-ip-address: true
-        service-name: ${spring.application.name}
-    gateway:
-      routes:
-        - id: pay_route1
-#          uri: http://localhost:8002
-          uri: lb://cloud-payment-service
-          predicates:
-            - Path=/pay/gateway/get/**
-        - id: pay_route2
-          #uri: http://localhost:8002
-          uri: lb://cloud-payment-service
-          predicates:
-            - Path=/pay/gateway/info/**
-            - Before=2024-03-05T17:24:35.447888500+08:00[Asia/Shanghai]
+#spring:
+#  application:
+#    name: cloud-gateway
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery:
+#        prefer-ip-address: true
+#        service-name: ${spring.application.name}
+#    gateway:
+#      routes:
+#        - id: pay_route1
+##          uri: http://localhost:8002
+#          uri: lb://cloud-payment-service
+#          predicates:
+#            - Path=/pay/gateway/get/**
+#        - id: pay_route2
+#          #uri: http://localhost:8002
+#          uri: lb://cloud-payment-service
+#          predicates:
+#            - Path=/pay/gateway/info/**
+##            - Before=2024-03-05T17:24:35.447888500+08:00[Asia/Shanghai]
+#            - Cookie=username,gyf
+#            - Header=X-Request-Id,\d+
