@@ -29,14 +29,14 @@ public class PayController {
     public ResultData<?> addPay(@RequestBody Pay pay){
         log.info(pay.toString());
         int i = payService.add(pay);
-        return ResultData.sussess("成功插入记录，返回值："+i);
+        return ResultData.success("成功插入记录，返回值："+i);
     }
 
     @DeleteMapping("/pay/delete/{id}")
     @Operation(summary = "删除",description = "支付流水删除方法")
     public ResultData<?> deletePay(@PathVariable("id") Integer id){
         int i = payService.delete(id);
-        return ResultData.sussess("成功删除记录，返回值："+i);
+        return ResultData.success("成功删除记录，返回值："+i);
     }
 
     @PutMapping("/pay/update")
@@ -45,21 +45,21 @@ public class PayController {
         Pay pay = new Pay();
         BeanUtil.copyProperties(payDTO,pay);
         int i = payService.update(pay);
-        return ResultData.sussess("成功修改记录，返回值："+i);
+        return ResultData.success("成功修改记录，返回值："+i);
     }
 
     @GetMapping("/pay/get/{id}")
     @Operation(summary = "按ID流水查看",description = "支付流水查看方法")
     public ResultData<?> getPay(@PathVariable("id") Integer id){
         Pay pay = payService.select(id);
-        return ResultData.sussess(pay);
+        return ResultData.success(pay);
     }
 
     @GetMapping("/pay/getAll")
     @Operation(summary = "查看所有流水",description = "支付流水查看所有流水方法")
     public ResultData<?> getPay(){
         List<Pay> pays = payService.selectAll();
-        return ResultData.sussess(pays);
+        return ResultData.success(pays);
     }
 
 

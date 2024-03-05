@@ -19,7 +19,7 @@ public  class ResultData<T> {
     }
 
 
-    public static <T> ResultData<T> sussess(T data){
+    public static <T> ResultData<T> success(T data){
         ResultData resultData = new ResultData();
         resultData.setCode(ReturnCodeEnum.RC200.getCode());
         resultData.setMessage(ReturnCodeEnum.RC200.getMessage());
