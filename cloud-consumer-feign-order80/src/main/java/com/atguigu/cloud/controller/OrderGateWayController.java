@@ -3,9 +3,12 @@ package com.atguigu.cloud.controller;
 import com.atguigu.cloud.api.OpenFeignApi;
 import com.atguigu.cloud.resp.ResultData;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 
 /**
  * @auther zzyy
@@ -27,5 +30,14 @@ public class OrderGateWayController
     public ResultData<String> getGatewayInfo()
     {
         return openFeignApi.getGatewayInfo();
+    }
+
+    @GetMapping(value = "/feign/pay/gateway/filter")
+    public ResultData<String> getGatewayFilter(HttpServletRequest request){
+        request.getParameterMap().forEach((key,value)->{
+            System.out.println(key);
+            System.out.println(Arrays.toString(value));
+        });
+        return openFeignApi.getGatewayFilter(request);
     }
 }
