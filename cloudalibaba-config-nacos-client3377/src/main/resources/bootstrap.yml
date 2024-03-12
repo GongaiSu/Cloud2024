@@ -8,3 +8,5 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml
+        group: PROP_GROUP
+        namespace: f6f88bf0-8c43-4243-8fae-ed5ccbf95f97
