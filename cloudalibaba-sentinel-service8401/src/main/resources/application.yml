@@ -12,3 +12,11 @@ spring:
         port: 8719
         dashboard: localhost:8858
       web-context-unify: false
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow # com.alibaba.cloud.sentinel.datasource.RuleType
